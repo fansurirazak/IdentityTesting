@@ -1,0 +1,53 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@using IdentityTesting.Models
+@model ProjectProp
+
+@{
+    ViewData["Title"] = "Assign Supervisor to Project";
+}
+
+<h1>Assign Supervisor</h1>
+
+<h4>Supervisors for the project</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AssignEvaluator">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="Evaluator1ID" class="control-label"></label>
+                <select asp-for="Evaluator1ID" class="form-control" asp-items="ViewBag.Evaluator1ID">
+                    <option value="" disabled>-- Select the first evaluator --</option>
+                </select>
+                <span asp-validation-for="Evaluator1ID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Evaluator2ID" class="control-label"></label>
+                <select asp-for="Evaluator2ID" class="form-control" asp-items="ViewBag.Evaluator2ID">
+                    <option value="" disabled>-- Select the second evaluator --</option>
+                </select>
+                <span asp-validation-for="Evaluator2ID" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Proposals">Back to List of Proposals</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

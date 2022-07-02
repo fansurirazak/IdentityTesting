@@ -1,0 +1,51 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@using IdentityTesting.Models
+@model ProjectProp
+
+@{
+    ViewData["Title"] = "Comment on Proposal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Comment on Proposal</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SupeComment" >
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SuperApprove" class="control-label"></label>
+                <input type="radio" id="opt1" asp-for="SuperApprove" value="True">
+                <label for="opt1">True</label><br>
+                <input type="radio" id="opt2" asp-for="SuperApprove" value="False">
+                <label for="opt2">False</label><br>  
+                <span asp-validation-for="SuperApprove" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SuperComment" class="control-label"></label>
+                <input asp-for="SuperComment" class="form-control" />
+                <span asp-validation-for="SuperComment" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="StudentProposals">Back to List of Supervised Proposals</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

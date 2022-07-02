@@ -4,8 +4,7 @@
     {
         Admin,
         Commitee,
-        ResearchLect,
-        DevelopLect,
+        Lecturer,
         Student,
         Supervisor,
         Evaluator

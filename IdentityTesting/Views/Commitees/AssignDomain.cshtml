@@ -1,0 +1,42 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model IdentityTesting.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "Assign Domain";
+}
+
+<h1>Assign Domain</h1>
+
+<h4>Assign a domain</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AssignDomain">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="DomainID" class="control-label"></label>
+                <select asp-for="DomainID" class="form-control" asp-items="ViewBag.DomainID">
+                    <option value="" disabled>-- Select Domain --</option>
+                </select>
+                <span asp-validation-for="DomainID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Lecturers">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

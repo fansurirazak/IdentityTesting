@@ -1,0 +1,66 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@using IdentityTesting.Models
+@model ProjectProp
+
+@{
+    ViewData["Title"] = "Evaluate Proposal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Evaluate Proposal</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EvalProposal" >
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="EvalAssess" class="control-label"></label><br>
+                <input type="radio" id="opt1" asp-for="EvalAssess" value="True">
+                <label for="opt1">True</label>
+                <input type="radio" id="opt2" asp-for="EvalAssess" value="False">
+                <label for="opt2">False</label><br>  
+                <span asp-validation-for="EvalAssess" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EvalComment1" class="control-label"></label>
+                <input asp-for="EvalComment1" class="form-control" />
+                <span asp-validation-for="EvalComment1" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EvalComment2" class="control-label"></label>
+                <input asp-for="EvalComment2" class="form-control" />
+                <span asp-validation-for="EvalComment2" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ProposalStatus" class="control-label"></label>
+                <select asp-for="ProposalStatus" class="form-control" asp-items="ViewBag.ProposalStatus">
+                    <option value="" disabled>-- Select Status --</option>
+                </select>
+                <span asp-validation-for="ProposalStatus" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="ViewEvalProposals">Back to List of Evaluated Proposals</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

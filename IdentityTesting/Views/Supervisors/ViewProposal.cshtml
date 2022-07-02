@@ -1,0 +1,103 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@using IdentityTesting.Models
+@model IdentityTesting.Models.ProjectProp
+
+@{
+    ViewData["Title"] = "Proposal Details";
+}
+
+<h1>Proposal Details</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ProjectTitle)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ProjectTitle)
+        </dd>
+
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ProjectType)
+        </dt>
+        <dd class = "col-sm-10">
+            @{var domainLoc = (Model.DomainID==1 ? "Research" : "Development");} 
+            @Html.DisplayFor(modelItem => domainLoc)
+        </dd>
+
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EvalAssess)
+        </dt>
+        <dd class = "col-sm-10">
+            @{var EvalLoc = (Model.EvalAssess ? "Yes":"No");}
+            @Html.DisplayFor(Model => EvalLoc)
+        </dd>
+
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EvalComment1)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EvalComment1)
+        </dd>
+
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EvalComment2)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EvalComment2)
+        </dd>
+
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SuperApprove)
+        </dt>
+        <dd class = "col-sm-10">
+            @{var SuperLoc = (Model.SuperApprove ? "Yes":"No");}
+            @Html.DisplayFor(Model => SuperLoc)
+        </dd>
+
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SuperComment)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SuperComment)
+        </dd>
+
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ProposalStatus)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ProposalStatus)
+        </dd>
+
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ProjSemester)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ProjSemester)
+        </dd>
+
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ProjSession)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ProjSession)
+        </dd>
+
+        <dt class = "col-sm-2">
+            @Html.DisplayFor(model => model.FileName)
+        </dt>
+        <dd class = "col-sm-10">
+            <a class="btn btn-primary" href="@(Model.FilePath)" role="button">Download File</a>
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="StudentProposals">Back to List of Supervised Proposals</a>
+</div>

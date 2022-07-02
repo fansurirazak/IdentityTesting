@@ -1,0 +1,93 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+
+@using IdentityTesting.Models.ViewModels
+@model IEnumerable<ProjPropDisplayVM>
+
+    @{
+    ViewData["Title"] = "Proposals";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table" id="woopwoop">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProposalStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DomainID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupervisorID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Evaluator1ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Evaluator2ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjSemester)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjSession)
+            </th>
+            <th>
+                Download Files
+            </th>
+
+            <th>
+               
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProposalStatus)
+            </td>
+            <td>
+                @{var domainLoc = (item.DomainID==1 ? "Research" : "Development");} 
+                @Html.DisplayFor(modelItem => domainLoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupervisorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Evaluator1Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Evaluator2Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjSemester)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjSession)
+            </td>
+            <td>
+                <a class="btn btn-primary" href="@(item.FilePath)" role="button">Download File</a>
+            </td>
+            <td>
+                    @if (item.EvalAssess != true)
+                    {
+                        <a asp-action="EvalProposal" asp-route-id="@item.ID">Evaluate Proposal</a> 
+                    }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -11,11 +11,18 @@ namespace IdentityTesting.Data
 
         }
 
-        public DbSet<Course>? Courses { get; set; }
+        public DbSet<ACDProgram> ACDPrograms { get; set; }
 
+        public DbSet<ACADDomain> ACADDomains { get; set; }
+        public DbSet<ProjectProp> ProjectProps { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Course>().ToTable("Course");
+            modelBuilder.Entity<ACDProgram>().ToTable("ACDProgram");
+            modelBuilder.Entity<ACADDomain>().ToTable("ACADDomain");
+            modelBuilder.Entity<ProjectProp>().ToTable("ProjectProp");
+
+
+
 
             base.OnModelCreating(modelBuilder);
         }

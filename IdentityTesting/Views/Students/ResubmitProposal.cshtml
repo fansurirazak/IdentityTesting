@@ -1,0 +1,42 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@using IdentityTesting.Models
+@model ProjectProp
+
+@{
+    ViewData["Title"] = "Resubmit Proposal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Resubmit Project Proposal</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ResubmitProposal" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+
+            <div>
+                <input type="file" name="file" /> 
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Proposals">Back to List of Proposals</a>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

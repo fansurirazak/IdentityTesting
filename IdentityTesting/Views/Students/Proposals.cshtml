@@ -1,0 +1,73 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@using IdentityTesting.Models
+@model IEnumerable<ProjectProp>
+
+
+@{
+    ViewData["Title"] = "Lecturers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<p>
+    <a asp-action="CreateProposal">Create New</a>
+</p>
+<table class="table" id="woopwoop">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DomainID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SuperApprove)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EvalAssess)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProposalStatus)
+            </th>
+            <th>
+               
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectTitle)
+            </td>
+            <td>
+                @{var domainLoc = (item.DomainID==1 ? "Research" : "Development");} 
+                @Html.DisplayFor(modelItem => domainLoc)
+            </td>
+            <td>
+                @{var isSuperApprove = (item.SuperApprove ? "Yes" : "No");} 
+                @Html.DisplayFor(modelItem => isSuperApprove)
+            </td>
+            <td>
+                @{var isEvalAssess = (item.EvalAssess ? "Yes" : "No");} 
+                @Html.DisplayFor(modelItem => isEvalAssess)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProposalStatus)
+            </td>
+            <td>
+                <a asp-action="ViewProposal" asp-route-id="@item.ID">View Proposal</a> |
+                <a asp-action="DeleteProposal" asp-route-id="@item.ID">Delete Proposal</a> |
+                <a asp-action="ResubmitProposal" asp-route-id="@item.ID">Resubmit Proposal</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
