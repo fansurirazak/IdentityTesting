@@ -330,7 +330,8 @@ namespace IdentityTesting.Controllers
 
             var listLect = await _userManager.GetUsersInRoleAsync(Enums.Roles.Lecturer.ToString());
 
-            if(listLect == null)
+            listLect = listLect.Where(a=>a.DomainID == prop.DomainID).ToList();
+            if (listLect == null)
             {
                 return NotFound();
             }

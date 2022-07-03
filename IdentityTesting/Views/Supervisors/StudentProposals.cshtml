@@ -75,7 +75,11 @@
             </td>
             <td>
                 <a asp-action="ViewProposal" asp-route-id="@item.ID">View Proposal</a> |
-                <a asp-action="SupeComment" asp-route-id="@item.ID">Leave Comment</a> 
+                @if (item.EvalAssess == false)
+                {
+                    <a asp-action="SupeComment" asp-route-id="@item.ID">Leave Comment</a> 
+                }
+                
             </td>
         </tr>
 }

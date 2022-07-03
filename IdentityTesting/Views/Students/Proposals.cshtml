@@ -65,7 +65,12 @@
             <td>
                 <a asp-action="ViewProposal" asp-route-id="@item.ID">View Proposal</a> |
                 <a asp-action="DeleteProposal" asp-route-id="@item.ID">Delete Proposal</a> |
-                <a asp-action="ResubmitProposal" asp-route-id="@item.ID">Resubmit Proposal</a>
+                
+                @if(item.ProposalStatus == ProposalStatus.AcceptedWithCondition || item.ProposalStatus == ProposalStatus.Rejected)
+                {
+                    <a asp-action="ResubmitProposal" asp-route-id="@item.ID">Resubmit Proposal</a>
+                }
+                
             </td>
         </tr>
 }
